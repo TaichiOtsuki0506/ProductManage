@@ -5,21 +5,17 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionManager {
+	//DB接続用定数
+	static String DATABASE_NAME = "product_management";
+	static String URL = "jdbc:mysql://localhost/" + DATABASE_NAME;
+	//DB接続用・ユーザ定数
+	static String USER = "root";
+	static String PASS = "Taichi1775";
 
-    static String DATABASE_NAME = "categories";
-    static String URL = "jdbc:mysql://localhost/" + DATABASE_NAME;
-    static String USER = "root";
-    static String PASSWORD = "Taichi1775";
+	//データベースに接続
+	public static Connection getConnection() throws SQLException {
 
-    public static void main(String[] args) {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+		return DriverManager.getConnection(URL, USER, PASS);
+	}
 
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
-    }
 }
