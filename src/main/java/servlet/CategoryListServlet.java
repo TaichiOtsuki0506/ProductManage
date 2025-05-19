@@ -15,17 +15,6 @@ public class CategoryListServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		processRequest(request, response);
-	}
-
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
-		processRequest(request, response);
-	}
-
-	public void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
-
 		try {
 			CategoryDAO categoryDAO = new CategoryDAO();
 			List<CategoryBean> categoryList = categoryDAO.getAllCategories();
@@ -38,6 +27,10 @@ public class CategoryListServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
 
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		// POSTリクエストの処理を記述する
 	}
 }

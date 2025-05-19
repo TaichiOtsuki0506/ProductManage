@@ -8,14 +8,21 @@ public class ConnectionManager {
 	//DB接続用定数
 	static String DATABASE_NAME = "product_management";
 	static String URL = "jdbc:mysql://localhost/" + DATABASE_NAME;
-	//DB接続用・ユーザ定数
 	static String USER = "root";
-	static String PASS = "Taichi1775";
+	static String PASSWORD = "Taichi1775";
 
 	//データベースに接続
 	public static Connection getConnection() throws SQLException {
-
-		return DriverManager.getConnection(URL, USER, PASS);
+		try {
+			// ドライバのロード
+			Class.forName("com.mysql.jdbc.Driver");
+			return DriverManager.getConnection(URL, USER, PASSWORD);
+		} catch (ClassNotFoundException e) {
+			System.err.println("MySQLドライバのロードに失敗しました: " + e.getMessage());
+			throw new SQLException(e);
+		} catch (SQLException e) {
+			System.err.println("JDBC接続エラー: " + e.getMessage());
+			throw e;
+		}
 	}
-
 }
