@@ -6,13 +6,13 @@
 	version="4.0">
 
 	<servlet>
-		<servlet-name>CategoryListServlet</servlet-name>
-		<servlet-class>servlet.CategoryListServlet</servlet-class>
+		<servlet-name>CategoryRegisterServlet</servlet-name>
+		<servlet-class>servlet.CategoryRegisterServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>CategoryListServlet</servlet-name>
-		<url-pattern>/category-list</url-pattern>
+		<servlet-name>CategoryRegisterServlet</servlet-name>
+		<url-pattern>/category-register</url-pattern>
 	</servlet-mapping>
 
 </web-app>

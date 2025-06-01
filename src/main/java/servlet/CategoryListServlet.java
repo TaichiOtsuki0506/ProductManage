@@ -31,6 +31,6 @@ public class CategoryListServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		// POSTリクエストの処理を記述する
+
 	}
 }

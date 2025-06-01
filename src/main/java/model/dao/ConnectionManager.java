@@ -6,10 +6,10 @@ import java.sql.SQLException;
 
 public class ConnectionManager {
 	//DB接続用定数
-	static String DATABASE_NAME = "product_management";
-	static String URL = "jdbc:mysql://localhost/" + DATABASE_NAME;
-	static String USER = "root";
-	static String PASSWORD = "Taichi1775";
+	static final String DATABASE_NAME = "product_management";
+	static final String URL = "jdbc:mysql://localhost/" + DATABASE_NAME;
+	static final String USER = "root";
+	static final String PASSWORD = "Taichi1775";
 
 	//データベースに接続
 	public static Connection getConnection() throws SQLException {

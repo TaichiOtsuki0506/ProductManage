@@ -29,5 +29,22 @@ public class CategoryDAO {
 		}
 		return categories;
 	}
+	//データベースに情報を登録する
 
+	public boolean registerCategories(CategoryBean category) throws SQLException {
+		String sql = "INSERT INTO categories(id, category_name) VALUES(?,?) ";
+
+		try (Connection conn = ConnectionManager.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			pstmt.setInt(1, category.getCategoryId());
+			pstmt.setString(2, category.getCategoryName());
+
+			int count = pstmt.executeUpdate();
+
+			return count > 0;
+
+		}
+
+	}
 }

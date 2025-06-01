@@ -12,7 +12,7 @@
 </head>
 <body>
 
-	<h2>カテゴリ一覧</h2>
+	<h2>カテゴリリスト</h2>
 
 	<c:if test="${empty categoryList}">
 		<p>カテゴリが見つかりませんでした。</p>
