@@ -15,7 +15,7 @@ public class ConnectionManager {
 	public static Connection getConnection() throws SQLException {
 		try {
 			// ドライバのロード
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			return DriverManager.getConnection(URL, USER, PASSWORD);
 		} catch (ClassNotFoundException e) {
 			System.err.println("MySQLドライバのロードに失敗しました: " + e.getMessage());

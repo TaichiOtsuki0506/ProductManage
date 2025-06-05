@@ -9,27 +9,33 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>データ登録入力画面</title>
+<title>カテゴリ登録と一覧表示</title>
 </head>
 <body>
 
-	<div style="text-align: center">
-		<h2>登録データ入力</h2>
-		<hr style="height: 3px; background-color: #0000ff" />
+	<h2>カテゴリ登録</h2>
+
+	<form action="<%=request.getContextPath()%>/category-register"
+		method="post">
+		<div>
+			<label for="categoryId">カテゴリID:</label> <input type="text"
+				id="categoryId" name="categoryId">
+		</div>
 		<br>
-	</div>
-	<p>登録する情報を入力してください</p>
-	<form action="${request.contextPath}/category-register" method="post">
-		<label for="categoryId">カテゴリID:</label> <input type="text"
-			id="categoryId" name="categoryId" required><br> <label
-			for="categoryName">カテゴリ名:</label> <input type="text"
-			id="categoryName" name="categoryName" required><br> <input
-			type="submit" value="登録">
+		<div>
+			<label for="categoryName">カテゴリ名:</label> <input type="text"
+				id="categoryName" name="categoryName">
+		</div>
+		<br>
+		<button type="submit">登録</button>
 	</form>
 
 	<hr>
 
 	<h2>カテゴリ一覧</h2>
+	<c:if test="${not empty message}">
+		<p style="color: green;">${message}</p>
+	</c:if>
 
 	<%
 	CategoryDAO categoryDAO = new CategoryDAO();
@@ -39,6 +45,7 @@
 		request.setAttribute("categoryList", categoryList);
 	} catch (Exception e) {
 		e.printStackTrace();
+		// エラー処理を記述
 	}
 	%>
 
