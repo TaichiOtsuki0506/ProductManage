@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="model.dao.CategoryDAO"%>
-<%@ page import="model.entity.CategoryBean"%>
-<%@ page import="java.util.List"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -15,7 +13,7 @@
 
 	<h2>カテゴリ登録</h2>
 
-	<form action="<%=request.getContextPath()%>/category-register"
+	<form action="${pageContext.request.contextPath}/category-register"
 		method="post">
 		<div>
 			<label for="categoryId">カテゴリID:</label> <input type="text"
@@ -37,18 +35,6 @@
 		<p style="color: green;">${message}</p>
 	</c:if>
 
-	<%
-	CategoryDAO categoryDAO = new CategoryDAO();
-	List<CategoryBean> categoryList = null;
-	try {
-		categoryList = categoryDAO.getAllCategories();
-		request.setAttribute("categoryList", categoryList);
-	} catch (Exception e) {
-		e.printStackTrace();
-		// エラー処理を記述
-	}
-	%>
-
 	<c:if test="${not empty categoryList}">
 		<table border="1">
 			<tr>
@@ -62,6 +48,9 @@
 				</tr>
 			</c:forEach>
 		</table>
+	</c:if>
+	<c:if test="${empty categoryList}">
+		<p>登録されているカテゴリはありません。</p>
 	</c:if>
 
 </body>

@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List; // 追加
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -32,6 +33,11 @@ public class CategoryRegisterServlet extends HttpServlet {
 			} else {
 				request.setAttribute("message", "登録に失敗しました。");
 			}
+
+			// 登録後も最新のカテゴリ一覧を取得してJSPに渡す
+			List<CategoryBean> categoryList = categoryDAO.getAllCategories();
+			request.setAttribute("categoryList", categoryList);
+
 			// 登録結果を表示するためにJSPへフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/category-register.jsp");
 			dispatcher.forward(request, response);
@@ -51,6 +57,16 @@ public class CategoryRegisterServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		CategoryDAO categoryDAO = new CategoryDAO();
+		List<CategoryBean> categoryList = null;
+		try {
+			categoryList = categoryDAO.getAllCategories();
+			request.setAttribute("categoryList", categoryList);
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("message", "カテゴリ一覧の取得中にエラーが発生しました。");
+		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/category-register.jsp");
 		dispatcher.forward(request, response);
