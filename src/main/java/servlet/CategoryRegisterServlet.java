@@ -1,7 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List; // 追加
+import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
